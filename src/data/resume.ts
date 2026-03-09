@@ -91,7 +91,7 @@ export const resumeData = {
 
   projects: [
     {
-      name: 'AI 智能应用平台（达利国际 · highfashion-admin/web-antd）',
+      name: 'AI 智能应用平台（达利国际）',
       desc: '构建企业级 AI 应用平台，为用户提供 AI 对话、AI 工作流、AI Agent 与 AI 多模态能力，支持通过可视化方式构建 AI 应用。',
       stack: 'Vue3、TypeScript、Vite、Ant Design Vue、Pinia、AI API、WebSocket',
       highlight: true,

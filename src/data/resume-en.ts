@@ -84,7 +84,7 @@ export const resumeDataEn = {
 
   projects: [
     {
-      name: 'AI Intelligent Application Platform (Dali · highfashion-admin/web-antd)',
+      name: 'AI Intelligent Application Platform (Dali)',
       desc: 'Enterprise AI application platform providing AI chat, AI workflow, AI Agent, and multimodal AI capabilities; supports building AI applications through visual tools.',
       stack: 'Vue3, TypeScript, Vite, Ant Design Vue, Pinia, AI API, WebSocket',
       highlight: true,
