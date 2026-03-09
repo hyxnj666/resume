@@ -66,7 +66,7 @@ pnpm start
 
 ### 发布到 Cloudflare Pages（免费，国内访问较稳）
 
-本项目已接入 [OpenNext Cloudflare](https://opennext.js.org/cloudflare)，可部署到 Cloudflare Workers/Pages，国内直连通常无需翻墙。
+![1773044943800](image/README/1773044943800.png)本项目已接入 [OpenNext Cloudflare](https://opennext.js.org/cloudflare)，可部署到 Cloudflare Workers/Pages，国内直连通常无需翻墙。**注意**：根目录的 `open-next.config.ts` 和 `wrangler.jsonc` 必须一并提交到 Git，否则 Cloudflare 构建会报错或提示创建配置。
 
 **1. 安装依赖**
 
@@ -96,7 +96,12 @@ pnpm run preview:cf
 
 - **方式 B：Git 自动部署**  
   - [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create** → **Connect to Git**，选 GitHub 与简历仓库。
-  - 构建命令按 Cloudflare 对 OpenNext/Next.js 的说明配置（通常为 `pnpm install && pnpm exec opennextjs-cloudflare build`），并在 **Settings → Variables** 中添加 `OPENAI_API_KEY`。详见 [Cloudflare Workers CI/CD](https://developers.cloudflare.com/workers/ci-cd/)。
+  - **重要**：必须用 OpenNext 生成 Worker 产物，否则会报错 `.open-next/worker.js was not found`。
+  - **Build 命令**填（二选一）：
+    - 若平台只跑“构建”、再自动执行 Wrangler 部署：`pnpm install && pnpm exec opennextjs-cloudflare build`
+    - 若需在构建里一并完成部署：`pnpm install && pnpm run deploy:cf`
+  - **Output directory** 保持默认或留空（Wrangler 会从 `wrangler.jsonc` 读 `.open-next`，不要填 `.next`）。
+  - 在 **Settings → Variables and Secrets** 中添加 `OPENAI_API_KEY`。详见 [Cloudflare Workers CI/CD](https://developers.cloudflare.com/workers/ci-cd/)。
 
 部署完成后用分配的网址访问即可。可与 Vercel 同时使用，简历里写两个链接（如「国内访问」「海外访问」）。
 
