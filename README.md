@@ -64,6 +64,48 @@ pnpm start
 
 **说明**：`.env.local` 不会随代码上传，所以线上环境必须在 Vercel 里配置 `OPENAI_API_KEY`，否则 Ask AI 会提示未配置。
 
+### 发布到 Cloudflare Pages（免费，国内访问较稳）
+
+本项目已接入 [OpenNext Cloudflare](https://opennext.js.org/cloudflare)，可部署到 Cloudflare Workers/Pages，国内直连通常无需翻墙。
+
+**1. 安装依赖**
+
+```bash
+pnpm install
+```
+
+**2. 配置环境变量（Ask AI 必填）**
+
+- 本地预览 / 部署前，在项目根目录创建 `.dev.vars`（已有可跳过），生产环境需在 Cloudflare 控制台配置。
+- 部署到 Cloudflare 后：**Workers & Pages** → 你的项目 → **Settings** → **Variables and Secrets**，添加 `OPENAI_API_KEY`。
+
+**3. 本地预览 Cloudflare 构建**
+
+```bash
+pnpm run preview:cf
+```
+
+**4. 部署到 Cloudflare**
+
+- **方式 A：命令行**  
+  首次需登录：`pnpm exec wrangler login`，然后执行：
+  ```bash
+  pnpm run deploy:cf
+  ```
+  按提示在浏览器完成 Cloudflare 授权后，会生成一个 `*.workers.dev` 或你绑定的域名。
+
+- **方式 B：Git 自动部署**  
+  - [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create** → **Connect to Git**，选 GitHub 与简历仓库。
+  - 构建命令按 Cloudflare 对 OpenNext/Next.js 的说明配置（通常为 `pnpm install && pnpm exec opennextjs-cloudflare build`），并在 **Settings → Variables** 中添加 `OPENAI_API_KEY`。详见 [Cloudflare Workers CI/CD](https://developers.cloudflare.com/workers/ci-cd/)。
+
+部署完成后用分配的网址访问即可。可与 Vercel 同时使用，简历里写两个链接（如「国内访问」「海外访问」）。
+
+**参考**：[OpenNext Cloudflare 文档](https://opennext.js.org/cloudflare)
+
+### 其他免费部署备选
+
+**Render**： [render.com](https://render.com) → New → Web Service → 选仓库，Build 填 `pnpm install && pnpm build`，Start 填 `pnpm start`，Environment 添加 `OPENAI_API_KEY`。
+
 ## 项目结构（概要）
 
 ```
