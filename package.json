@@ -6,13 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "preview:cf": "node scripts/ensure-open-next-config.js && opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy:cf": "node scripts/ensure-open-next-config.js && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "upload:cf": "node scripts/ensure-open-next-config.js && opennextjs-cloudflare build && opennextjs-cloudflare upload"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.17.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
@@ -24,7 +20,6 @@
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
-    "wrangler": "^3.99.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
