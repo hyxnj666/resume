@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview:cf": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy:cf": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "upload:cf": "opennextjs-cloudflare build && opennextjs-cloudflare upload"
+    "preview:cf": "node scripts/ensure-open-next-config.js && opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy:cf": "node scripts/ensure-open-next-config.js && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload:cf": "node scripts/ensure-open-next-config.js && opennextjs-cloudflare build && opennextjs-cloudflare upload"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.17.1",
