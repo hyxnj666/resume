@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "首页",
+    "resume": "简历",
+    "projects": "项目",
+    "aiProjects": "AI 项目",
+    "askAi": "Ask AI",
+    "blog": "Blog",
+    "contact": "联系",
+    "brandSub": "AI 前端"
+  },
+  "home": {
+    "heroTagline": "AI Frontend · 全栈方向",
+    "askAiAboutMe": "Ask AI about me",
+    "fullResume": "完整简历",
+    "aboutMeTitle": "About Me",
+    "aboutMeDesc": "5+ 年前端开发经验，具备大型 Web 应用与前端架构设计经验。当前主要从事 AI 平台与 AI 应用的前端工程化建设，专注于 LLM 应用、AI 工作流、AI Agent 及多模态 AI 产品的交互与架构实现；熟悉 AI 对话、知识库(RAG)、Workflow、智能体等前端实现，能构建高可扩展、可维护的 AI 平台型产品。",
+    "aiProjectsTitle": "AI 项目",
+    "viewAllAiProjects": "查看全部 AI 项目",
+    "projectsTitle": "项目",
+    "viewAllProjects": "查看全部项目",
+    "ctaDesc": "想更了解我的经历？让 AI 来回答"
+  },
+  "resume": {
+    "resumeLabel": "Resume",
+    "personalSummary": "个人简介",
+    "education": "教育经历",
+    "techStack": "技术栈",
+    "coreAbilities": "核心能力",
+    "skills": "职业技能",
+    "work": "工作经历",
+    "aiProjectsExp": "AI 项目经验",
+    "projects": "项目经历",
+    "otherProjects": "其他项目",
+    "architectureSummary": "架构能力总结",
+    "location": "现居住地",
+    "birth": "出生年月",
+    "phone": "联系电话",
+    "email": "电子邮箱",
+    "footer": "在线简历"
+  },
+  "askAi": {
+    "badge": "Ask AI about me",
+    "title": "向 AI 了解我的经历",
+    "subtitle": "可以问：他做过什么项目、技术栈、是否适合某职位、AI 相关经验等",
+    "assistantTitle": "简历助手",
+    "placeholder": "输入你的问题…",
+    "send": "发送",
+    "emptyHint": "输入问题开始，例如：「他是否适合 AI 工程师岗位？」「介绍一下他的 AI 项目」",
+    "thinking": "正在思考…",
+    "errorPrefix": "错误：",
+    "footer": "基于简历内容回答，不编造信息。需配置 OPENAI_API_KEY 后使用。"
+  },
+  "contact": {
+    "backHome": "首页",
+    "title": "联系我",
+    "subtitle": "欢迎通过以下方式沟通机会或合作",
+    "location": "现居住地",
+    "phone": "联系电话",
+    "email": "电子邮箱"
+  },
+  "projects": {
+    "backHome": "首页",
+    "title": "项目经历",
+    "subtitle": "前端、可视化、流媒体与业务系统相关项目"
+  },
+  "aiProjects": {
+    "backHome": "首页",
+    "title": "AI 项目",
+    "subtitle": "与 AI 平台、培训、会议、知识库等相关的项目经验"
+  },
+  "blog": {
+    "backHome": "首页",
+    "title": "Blog",
+    "subtitle": "技术笔记与分享（可后续用 MDX 接入）",
+    "empty": "暂无文章，后续可在此用 MDX 维护博客内容。"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "Home",
+    "resume": "Resume",
+    "projects": "Projects",
+    "aiProjects": "AI Projects",
+    "askAi": "Ask AI",
+    "blog": "Blog",
+    "contact": "Contact",
+    "brandSub": "AI Frontend"
+  },
+  "home": {
+    "heroTagline": "AI Frontend · Full‑Stack",
+    "askAiAboutMe": "Ask AI about me",
+    "fullResume": "Full Resume",
+    "aboutMeTitle": "About Me",
+    "aboutMeDesc": "5+ years front-end experience; large-scale Web apps and front-end architecture. Focus: AI platform and AI application front-end engineering—LLM apps, AI workflow, AI Agent, and multimodal AI interaction and architecture; familiar with AI chat, RAG, Workflow, and Agent front-end; builds scalable, maintainable AI platform products.",
+    "aiProjectsTitle": "AI Projects",
+    "viewAllAiProjects": "View all AI projects",
+    "projectsTitle": "Projects",
+    "viewAllProjects": "View all projects",
+    "ctaDesc": "Want to know more? Ask AI."
+  },
+  "resume": {
+    "resumeLabel": "Resume",
+    "personalSummary": "Summary",
+    "education": "Education",
+    "techStack": "Tech Stack",
+    "coreAbilities": "Core Abilities",
+    "skills": "Skills",
+    "work": "Experience",
+    "aiProjectsExp": "AI Project Experience",
+    "projects": "Projects",
+    "otherProjects": "Other Projects",
+    "architectureSummary": "Architecture Summary",
+    "location": "Location",
+    "birth": "Birth",
+    "phone": "Phone",
+    "email": "Email",
+    "footer": "Online Resume"
+  },
+  "askAi": {
+    "badge": "Ask AI about me",
+    "title": "Ask AI about my experience",
+    "subtitle": "e.g. projects, tech stack, fit for a role, AI experience",
+    "assistantTitle": "Resume Assistant",
+    "placeholder": "Ask a question…",
+    "send": "Send",
+    "emptyHint": "Try: \"Is he a fit for an AI engineer role?\" or \"Introduce his AI projects\"",
+    "thinking": "Thinking…",
+    "errorPrefix": "Error: ",
+    "footer": "Answers are based on resume only. Requires OPENAI_API_KEY."
+  },
+  "contact": {
+    "backHome": "Home",
+    "title": "Contact",
+    "subtitle": "Open to opportunities and collaboration",
+    "location": "Location",
+    "phone": "Phone",
+    "email": "Email"
+  },
+  "projects": {
+    "backHome": "Home",
+    "title": "Projects",
+    "subtitle": "Front-end, visualization, streaming & business systems"
+  },
+  "aiProjects": {
+    "backHome": "Home",
+    "title": "AI Projects",
+    "subtitle": "AI platform, training, meetings, knowledge base"
+  },
+  "blog": {
+    "backHome": "Home",
+    "title": "Blog",
+    "subtitle": "Tech notes (MDX can be added later)",
+    "empty": "No posts yet."
+  }
+}
