@@ -27,7 +27,7 @@ export const resumeData = {
 
   /** 技术栈（升级版：按参考分块） */
   techStack: [
-    'AI 应用开发：熟悉 LLM 应用开发流程，具备 AI 对话系统与 AI 产品前端开发经验；熟悉 AI 工作流(Workflow)与 AI Agent(智能体)交互系统设计；具备 AI 知识库(RAG)系统前端开发经验，理解向量检索与语义搜索流程；熟悉 AI 多模态应用集成（文生图、文生视频等）；熟悉 Prompt Engineering 与 AI 应用交互设计。',
+    'AI 应用开发：熟悉 LLM 应用开发流程，具备 AI 对话系统与流式响应(Streaming Rendering)前端开发经验；熟悉 AI 工作流(DAG Workflow)与 AI Agent(智能体)交互系统设计；具备 AI 知识库(RAG)系统前端开发经验，理解向量检索与语义搜索流程；熟悉 AI 多模态应用集成（文生图、文生视频等）；熟悉 Prompt Engineering 与 AI 应用交互设计。',
     '前端架构能力：熟练掌握 React、Vue.js 技术体系，具备复杂系统架构设计经验；熟悉企业级前端架构方案（组件化设计、模块化开发与状态管理）；熟悉 Umi 与 Dva 企业级开发框架；熟悉大型系统模块拆分与工程结构设计，具备良好的可扩展性设计能力。',
     '前端工程化：熟悉前端工程化体系，包括 Webpack 构建优化与 CI/CD 流程；熟练使用 Git 进行团队协作开发；熟悉前端性能优化、代码拆分与资源加载优化。',
     '数据可视化：熟悉数据可视化系统开发，熟练使用 Apache ECharts；熟悉地理数据可视化框架 AntV L7；熟悉 AntV 生态数据可视化体系。',
@@ -38,16 +38,16 @@ export const resumeData = {
   /** 核心能力（架构师级，与参考一致） */
   coreAbilities: [
     'AI 平台前端架构设计与系统模块拆分，保障可扩展性与可维护性',
-    '构建 AI 工作流可视化系统与流程编排交互',
+    '构建 AI 工作流(DAG)可视化系统与流程编排、节点执行状态同步与调试',
     '设计并实现 AI Agent 操作界面与多模型调用交互层',
     'AI 知识库与 RAG 系统前端集成与检索体验优化',
-    'AI 对话系统与流式输出、Prompt 配置与调试体验',
+    'AI 对话系统与流式响应(Streaming Rendering)、Prompt 配置与调试体验',
     '中后台组件抽象、状态管理与工程化规范落地',
     '高性能优化与监控，保障 AI 产品响应与稳定性',
   ],
 
   skills: [
-    { label: 'AI 应用开发', text: '熟悉 LLM 应用开发流程，具备 AI 对话系统与 AI 产品前端开发经验；熟悉 AI 工作流(Workflow)与 AI Agent(智能体)交互系统设计；具备 AI 知识库(RAG)系统前端开发经验，理解向量检索与语义搜索；熟悉 AI 多模态应用集成（文生图、文生视频）；熟悉 Prompt Engineering 与 AI 应用交互设计。', highlight: true },
+    { label: 'AI 应用开发', text: '熟悉 LLM 应用开发流程，具备 AI 对话系统与流式响应(Streaming Rendering)前端开发经验；熟悉 AI 工作流(DAG Workflow)与 AI Agent(智能体)交互系统设计；具备 AI 知识库(RAG)系统前端开发经验，理解向量检索与语义搜索；熟悉 AI 多模态应用集成（文生图、文生视频）；熟悉 Prompt Engineering 与 AI 应用交互设计。', highlight: true },
     { label: '前端架构能力', text: '熟练掌握 React、Vue.js 技术体系，具备复杂系统架构设计经验；熟悉企业级前端架构（组件化、模块化、状态管理）、Umi 与 Dva；熟悉大型系统模块拆分与工程结构设计，具备良好的可扩展性设计能力。', highlight: false },
     { label: '前端工程化', text: '熟悉前端工程化体系，包括 Webpack 构建优化与 CI/CD 流程；熟练使用 Git 进行团队协作；熟悉前端性能优化、代码拆分与资源加载优化。', highlight: false },
     { label: '数据可视化', text: '熟悉数据可视化系统开发，熟练使用 Apache ECharts；熟悉地理数据可视化框架 AntV L7 与 AntV 生态。', highlight: false },
@@ -62,12 +62,13 @@ export const resumeData = {
       stack: 'Vue3、TypeScript、Vite、Ant Design Vue、Pinia',
       highlight: true,
       points: [
-        '负责 AI 平台整体前端架构设计与技术选型。',
-        '构建 AI 对话系统 UI，实现多轮对话与流式响应交互体验。',
-        '设计并实现 AI 工作流(Workflow)可视化编辑系统，实现节点式 AI 流程构建。',
-        '参与 AI Agent(智能体)系统前端开发，实现类步骤流任务执行交互。',
-        '集成多种 AI 模型能力，实现文生图、文生视频等多模态 AI 功能调用。',
-        '设计 AI 知识库系统前端模块，实现 RAG 知识检索与对话增强能力。',
+        '负责 AI 平台整体前端架构设计与技术选型，基于 Vue3 + TypeScript + Vite 构建模块化前端架构，提升系统可扩展性与开发效率。',
+        '设计并实现 AI 对话系统前端架构，实现流式响应(Streaming Rendering)渲染机制，支持多轮上下文管理与高并发消息处理，优化 AI 交互体验。',
+        '构建 AI Workflow(DAG)可视化流程编辑器，基于节点化架构实现 Prompt Node、LLM Node、Tool Node 等流程节点，支持拖拽式流程编排与执行调试。',
+        '参与 AI Agent(智能体)系统前端开发，设计类 Step Flow 的任务执行界面，实现任务拆解、执行状态追踪与多工具调用展示。',
+        '集成多种 AI 模型能力，实现文生图、文生视频等多模态 AI 功能的统一调用与交互界面设计。',
+        '构建 AI 知识库(RAG)系统前端模块，实现知识检索、语义搜索与对话增强能力，提升 AI 回答准确性。',
+        '设计 AI 平台的 API 交互层与 WebSocket 实时通信机制，实现 AI 响应流式输出与实时任务状态更新。',
       ],
     },
     {
@@ -92,16 +93,18 @@ export const resumeData = {
   projects: [
     {
       name: 'AI 智能应用平台（达利国际）',
-      desc: '构建企业级 AI 应用平台，为用户提供 AI 对话、AI 工作流、AI Agent 与 AI 多模态能力，支持通过可视化方式构建 AI 应用。',
-      stack: 'Vue3、TypeScript、Vite、Ant Design Vue、Pinia、AI API、WebSocket',
+      desc: '构建企业级 AI 应用平台，为用户提供 AI 对话、AI Workflow(DAG)、AI Agent 与多模态能力，支持通过可视化方式快速构建 AI 应用。',
+      stack: 'Vue3、TypeScript、Vite、Ant Design Vue、Pinia、WebSocket、AI API、Streaming Rendering',
       highlight: true,
       points: [
-        '负责 AI 平台整体前端架构设计与技术选型。',
-        '构建 AI 对话系统 UI，实现多轮对话与流式响应交互体验。',
-        '设计并实现 AI 工作流(Workflow)可视化编辑系统，实现节点式 AI 流程构建。',
-        '参与 AI Agent(智能体)系统前端开发，实现类步骤流任务执行交互。',
-        '集成多种 AI 模型能力，实现文生图、文生视频等多模态 AI 功能调用。',
-        '设计 AI 知识库系统前端模块，实现 RAG 知识检索与对话增强能力。',
+        '负责 AI 平台整体前端架构设计与技术选型，基于 Vue3 + TypeScript + Vite 构建模块化前端架构，提升系统可扩展性与开发效率。',
+        '设计并实现 AI 对话系统前端架构，实现流式响应(Streaming Rendering)渲染机制，支持多轮上下文管理与高并发消息处理，优化 AI 交互体验。',
+        '构建 AI Workflow(DAG)可视化流程编辑器，基于节点化架构实现 Prompt Node、LLM Node、Tool Node 等流程节点，支持拖拽式流程编排与执行调试。',
+        '参与 AI Agent(智能体)系统前端开发，设计类 Step Flow 的任务执行界面，实现任务拆解、执行状态追踪与多工具调用展示。',
+        '集成多种 AI 模型能力，实现文生图、文生视频等多模态 AI 功能的统一调用与交互界面设计。',
+        '构建 AI 知识库(RAG)系统前端模块，实现知识检索、语义搜索与对话增强能力，提升 AI 回答准确性。',
+        '设计 AI 平台的 API 交互层与 WebSocket 实时通信机制，实现 AI 响应流式输出与实时任务状态更新。',
+        '技术挑战：实现 AI Workflow 节点执行状态的实时同步与可视化，通过 WebSocket 实现流程执行日志实时更新，解决复杂异步任务下的状态管理问题。',
       ],
     },
     {

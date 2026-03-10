@@ -21,7 +21,7 @@ export const resumeDataEn = {
   },
 
   techStack: [
-    'AI application development: LLM application development; AI chat and AI product front-end; AI Workflow and AI Agent interaction design; AI knowledge base (RAG) front-end and vector/semantic search; multimodal AI (text-to-image, text-to-video); Prompt Engineering and AI interaction design.',
+    'AI application development: LLM application development; AI chat with streaming response (Streaming Rendering); AI Workflow (DAG) and AI Agent interaction design; AI knowledge base (RAG) front-end and vector/semantic search; multimodal AI (text-to-image, text-to-video); Prompt Engineering and AI interaction design.',
     'Front-end architecture: React, Vue.js; complex system architecture; enterprise front-end (component design, modular development, state management); Umi and Dva; large-scale module decomposition and scalability.',
     'Front-end engineering: Webpack build optimization and CI/CD; Git for collaboration; performance optimization, code splitting, and resource loading.',
     'Data visualization: Apache ECharts; AntV L7 for geo visualization; AntV ecosystem.',
@@ -31,16 +31,16 @@ export const resumeDataEn = {
 
   coreAbilities: [
     'AI platform front-end architecture and module design for scalability and maintainability',
-    'Build AI workflow visualization and flow orchestration UX',
+    'Build AI Workflow (DAG) visualization, flow orchestration, and node execution state sync and debugging',
     'Design and implement AI Agent UIs and multi-model call interaction layer',
     'AI knowledge base and RAG front-end integration and retrieval UX',
-    'AI chat systems, streaming output, Prompt config and debugging experience',
+    'AI chat systems with streaming response (Streaming Rendering), Prompt config and debugging experience',
     'Admin component abstraction, state management, and engineering standards',
     'Performance optimization and monitoring for AI product responsiveness and stability',
   ],
 
   skills: [
-    { label: 'AI application development', text: 'LLM application development; AI chat and AI product front-end; AI Workflow and AI Agent interaction design; AI knowledge base (RAG), vector and semantic search; multimodal AI (text-to-image, text-to-video); Prompt Engineering and AI interaction design.', highlight: true },
+    { label: 'AI application development', text: 'LLM application development; AI chat with streaming response (Streaming Rendering); AI Workflow (DAG) and AI Agent interaction design; AI knowledge base (RAG), vector and semantic search; multimodal AI (text-to-image, text-to-video); Prompt Engineering and AI interaction design.', highlight: true },
     { label: 'Front-end architecture', text: 'React, Vue.js; complex system architecture; enterprise front-end (component, modular, state management); Umi and Dva; large-scale module decomposition and scalability.', highlight: false },
     { label: 'Front-end engineering', text: 'Webpack build optimization and CI/CD; Git for collaboration; performance optimization, code splitting, and resource loading.', highlight: false },
     { label: 'Data visualization', text: 'ECharts; AntV L7 and AntV ecosystem for data visualization.', highlight: false },
@@ -55,12 +55,13 @@ export const resumeDataEn = {
       stack: 'Vue3, TypeScript, Vite, Ant Design Vue, Pinia',
       highlight: true,
       points: [
-        'Own AI platform overall front-end architecture design and technology selection.',
-        'Build AI chat system UI with multi-turn conversation and streaming response experience.',
-        'Design and implement AI Workflow visual editing system for node-based AI process construction.',
-        'Contribute to AI Agent system front-end with step-flow task execution interaction.',
-        'Integrate multiple AI model capabilities (text-to-image, text-to-video, multimodal).',
-        'Design AI knowledge base front-end module with RAG retrieval and dialogue enhancement.',
+        'Own AI platform overall front-end architecture design and technology selection; built modular front-end with Vue3 + TypeScript + Vite for scalability and development efficiency.',
+        'Design and implement AI dialogue system front-end architecture with streaming response (Streaming Rendering) rendering, multi-turn context management, and high-concurrency message handling for AI UX.',
+        'Build AI Workflow (DAG) visual flow editor with node-based architecture (Prompt Node, LLM Node, Tool Node), drag-and-drop orchestration, and execution debugging.',
+        'Contribute to AI Agent system front-end; design Step Flow–style task execution UI with task decomposition, execution status tracking, and multi-tool invocation display.',
+        'Integrate multiple AI model capabilities with unified invocation and UI for multimodal features (text-to-image, text-to-video).',
+        'Build AI knowledge base (RAG) front-end module for knowledge retrieval, semantic search, and dialogue enhancement to improve answer accuracy.',
+        'Design AI platform API interaction layer and WebSocket real-time communication for streaming AI responses and real-time task status updates.',
       ],
     },
     {
@@ -85,16 +86,18 @@ export const resumeDataEn = {
   projects: [
     {
       name: 'AI Intelligent Application Platform (Dali)',
-      desc: 'Enterprise AI application platform providing AI chat, AI workflow, AI Agent, and multimodal AI capabilities; supports building AI applications through visual tools.',
-      stack: 'Vue3, TypeScript, Vite, Ant Design Vue, Pinia, AI API, WebSocket',
+      desc: 'Enterprise AI application platform providing AI chat, AI Workflow (DAG), AI Agent, and multimodal capabilities; supports building AI applications through visual tools.',
+      stack: 'Vue3, TypeScript, Vite, Ant Design Vue, Pinia, WebSocket, AI API, Streaming Rendering',
       highlight: true,
       points: [
-        'Own AI platform overall front-end architecture design and technology selection.',
-        'Build AI chat system UI with multi-turn conversation and streaming response experience.',
-        'Design and implement AI Workflow visual editing system for node-based AI process construction.',
-        'Contribute to AI Agent system front-end with step-flow task execution interaction.',
-        'Integrate multiple AI model capabilities (text-to-image, text-to-video, multimodal).',
-        'Design AI knowledge base front-end module with RAG retrieval and dialogue enhancement.',
+        'Own AI platform overall front-end architecture and technology selection; built modular front-end with Vue3 + TypeScript + Vite for scalability and efficiency.',
+        'Design and implement AI dialogue system front-end architecture with streaming response (Streaming Rendering) rendering, multi-turn context management, and high-concurrency message handling.',
+        'Build AI Workflow (DAG) visual flow editor with node-based architecture (Prompt Node, LLM Node, Tool Node), drag-and-drop orchestration, and execution debugging.',
+        'Contribute to AI Agent system front-end; design Step Flow–style task execution UI with task decomposition, execution status tracking, and multi-tool invocation display.',
+        'Integrate multiple AI model capabilities with unified invocation and UI for multimodal features (text-to-image, text-to-video).',
+        'Build AI knowledge base (RAG) front-end module for knowledge retrieval, semantic search, and dialogue enhancement.',
+        'Design AI platform API interaction layer and WebSocket real-time communication for streaming AI responses and real-time task status updates.',
+        'Technical challenge: real-time sync and visualization of AI Workflow node execution status; WebSocket-based process execution log updates; state management for complex async tasks.',
       ],
     },
     {
