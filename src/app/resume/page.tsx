@@ -6,6 +6,7 @@ import { useLocale } from '@/contexts/locale';
 import { getResumeData } from '@/data/resume';
 import type { ResumeData } from '@/data/resume';
 import { Card, CardContent } from '@/components/ui/card';
+import { ProjectExplainButton } from '@/components/project-explain-button';
 import { cn, maskPhone } from '@/lib/utils';
 
 const fadeInUp = {
@@ -25,6 +26,10 @@ const sectionVariants = {
     transition: { duration: 0.5, staggerChildren: 0.08, delayChildren: 0.1 },
   },
 };
+
+function isProjectValuePoint(point: string) {
+  return point.startsWith('项目价值：') || point.startsWith('Project value:');
+}
 
 function Section({
   id,
@@ -66,9 +71,11 @@ export default function ResumePage() {
   const sep = locale === 'en' ? ': ' : '：';
   const aiProjects = d.projects.filter((p) => p.highlight);
   const otherProjects = d.projects.filter((p) => !p.highlight);
+  const resumeCardContentClassName = 'p-5 pt-7 sm:p-6 sm:pt-7';
+  const projectCardContentClassName = 'p-5 pt-6 sm:p-6 sm:pt-6';
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
+    <div className="max-w-4xl mx-auto px-4 py-10 md:py-14">
       <motion.header
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -93,7 +100,7 @@ export default function ResumePage() {
         <Section title={t('resume.personalSummary')}>
           <motion.div variants={fadeInUp} custom={0}>
             <Card>
-              <CardContent className="p-5">
+              <CardContent className={resumeCardContentClassName}>
                 <p className="text-slate-300 text-sm leading-relaxed">{d.summary}</p>
               </CardContent>
             </Card>
@@ -104,7 +111,7 @@ export default function ResumePage() {
       <Section title={t('resume.education')}>
         <motion.div variants={fadeInUp} custom={0}>
           <Card>
-            <CardContent className="p-5">
+            <CardContent className={resumeCardContentClassName}>
               <p className="text-slate-400 text-sm">{d.education.period}</p>
               <p className="font-semibold text-white mt-1">{d.education.school}</p>
               <p className="text-slate-400 text-sm mt-0.5">{d.education.major}</p>
@@ -116,7 +123,7 @@ export default function ResumePage() {
       {d.techStack && d.techStack.length > 0 && (
         <Section title={t('resume.techStack')}>
           <Card>
-            <CardContent className="p-5">
+            <CardContent className={resumeCardContentClassName}>
               <ul className="space-y-2 text-slate-300 text-sm">
                 {d.techStack.map((line, i) => (
                   <motion.li key={i} variants={fadeInUp} custom={i} className="flex gap-2">
@@ -133,7 +140,7 @@ export default function ResumePage() {
       {d.coreAbilities && d.coreAbilities.length > 0 && (
         <Section title={t('resume.coreAbilities')}>
           <Card>
-            <CardContent className="p-5">
+            <CardContent className={resumeCardContentClassName}>
               <ul className="space-y-2 text-slate-300 text-sm">
                 {d.coreAbilities.map((line, i) => (
                   <motion.li key={i} variants={fadeInUp} custom={i} className="flex gap-2">
@@ -149,7 +156,7 @@ export default function ResumePage() {
 
       <Section title={t('resume.skills')}>
         <Card>
-          <CardContent className="p-5">
+          <CardContent className={resumeCardContentClassName}>
             <ul className="space-y-2.5 text-slate-300 text-sm">
               {d.skills.map((s, i) => (
                 <motion.li key={s.label} variants={fadeInUp} custom={i} className={cn(s.highlight && 'text-cyan-200/90')}>
@@ -167,7 +174,7 @@ export default function ResumePage() {
           {d.work.map((job, j) => (
             <motion.div key={job.company} variants={fadeInUp} custom={j}>
               <Card className={cn(job.highlight && 'ring-1 ring-cyan-400/30')}>
-                <CardContent className="p-5">
+                <CardContent className={resumeCardContentClassName}>
                   <div className="flex flex-wrap justify-between items-baseline gap-2">
                     <p className="font-semibold text-white">{job.company}</p>
                     <p className="text-xs text-slate-500">{job.time}</p>
@@ -190,22 +197,35 @@ export default function ResumePage() {
       {aiProjects.length > 0 && (
         <Section title={t('resume.aiProjectsExp')}>
           <div className="space-y-5">
-            {aiProjects.map((proj, j) => (
-              <motion.div key={proj.name} variants={fadeInUp} custom={j}>
-                <Card className="ring-1 ring-cyan-400/30">
-                  <CardContent className="p-5">
-                    <p className="font-semibold text-white">{proj.name}</p>
-                    <p className="text-sm text-slate-400 mt-1">{proj.desc}</p>
-                    <ul className="mt-2 space-y-1 text-slate-400 text-sm list-disc list-inside">
-                      {proj.points.map((point, k) => (
-                        <li key={k}>{point}</li>
-                      ))}
-                    </ul>
-                    <p className="mt-2 text-xs text-cyan-400/80 font-mono">{proj.stack}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            {aiProjects.map((proj, j) => {
+              const projectValuePoint = proj.points.find(isProjectValuePoint);
+              const regularPoints = proj.points.filter((point) => !isProjectValuePoint(point));
+
+              return (
+                <motion.div key={proj.name} variants={fadeInUp} custom={j}>
+                  <Card className="ring-1 ring-cyan-400/30">
+                    <CardContent className={projectCardContentClassName}>
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <p className="font-semibold text-white">{proj.name}</p>
+                        <ProjectExplainButton project={{ name: proj.name, desc: proj.desc, points: proj.points }} />
+                      </div>
+                      <p className="text-sm text-slate-400 mt-1">{proj.desc}</p>
+                      <ul className="mt-2 space-y-1 text-slate-400 text-sm list-disc list-inside">
+                        {regularPoints.map((point, k) => (
+                          <li key={k}>{point}</li>
+                        ))}
+                      </ul>
+                      {projectValuePoint && (
+                        <div className="mt-3 rounded-xl border border-cyan-500/20 bg-cyan-500/8 px-3 py-2.5 text-sm leading-6 text-cyan-100">
+                          {projectValuePoint}
+                        </div>
+                      )}
+                      <p className="mt-2 text-xs text-cyan-400/80 font-mono">{proj.stack}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
         </Section>
       )}
@@ -213,22 +233,35 @@ export default function ResumePage() {
       {otherProjects.length > 0 && (
         <Section title={t('resume.otherProjects')}>
           <div className="space-y-5">
-            {otherProjects.map((proj, j) => (
-              <motion.div key={proj.name} variants={fadeInUp} custom={j}>
-                <Card>
-                  <CardContent className="p-5">
-                    <p className="font-semibold text-white">{proj.name}</p>
-                    <p className="text-sm text-slate-400 mt-1">{proj.desc}</p>
-                    <ul className="mt-2 space-y-1 text-slate-400 text-sm list-disc list-inside">
-                      {proj.points.map((point, k) => (
-                        <li key={k}>{point}</li>
-                      ))}
-                    </ul>
-                    <p className="mt-2 text-xs text-cyan-400/80 font-mono">{proj.stack}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            {otherProjects.map((proj, j) => {
+              const projectValuePoint = proj.points.find(isProjectValuePoint);
+              const regularPoints = proj.points.filter((point) => !isProjectValuePoint(point));
+
+              return (
+                <motion.div key={proj.name} variants={fadeInUp} custom={j}>
+                  <Card>
+                    <CardContent className={projectCardContentClassName}>
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <p className="font-semibold text-white">{proj.name}</p>
+                        <ProjectExplainButton project={{ name: proj.name, desc: proj.desc, points: proj.points }} />
+                      </div>
+                      <p className="text-sm text-slate-400 mt-1">{proj.desc}</p>
+                      <ul className="mt-2 space-y-1 text-slate-400 text-sm list-disc list-inside">
+                        {regularPoints.map((point, k) => (
+                          <li key={k}>{point}</li>
+                        ))}
+                      </ul>
+                      {projectValuePoint && (
+                        <div className="mt-3 rounded-xl border border-cyan-500/20 bg-cyan-500/8 px-3 py-2.5 text-sm leading-6 text-cyan-100">
+                          {projectValuePoint}
+                        </div>
+                      )}
+                      <p className="mt-2 text-xs text-cyan-400/80 font-mono">{proj.stack}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
         </Section>
       )}
@@ -237,7 +270,7 @@ export default function ResumePage() {
         <Section title={t('resume.architectureSummary')}>
           <motion.div variants={fadeInUp} custom={0}>
             <Card>
-              <CardContent className="p-5">
+              <CardContent className={resumeCardContentClassName}>
                 <p className="text-slate-300 text-sm leading-relaxed">{d.architectureSummary}</p>
               </CardContent>
             </Card>

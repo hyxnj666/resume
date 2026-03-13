@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Bot, FileText, FolderOpen, Home, Mail, MessageCircle, Sparkles } from 'lucide-react';
+import { Bot, FileText, FolderOpen, Home, LayoutGrid, Mail, MessageCircle, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLocale } from '@/contexts/locale';
 import { getResumeData } from '@/data/resume';
@@ -12,6 +12,7 @@ const navKeys = [
   { href: '/resume', key: 'resume', icon: FileText },
   { href: '/projects', key: 'projects', icon: FolderOpen },
   { href: '/ai-projects', key: 'aiProjects', icon: Sparkles },
+  { href: '/ai-demo', key: 'aiDemo', icon: LayoutGrid },
   { href: '/ask-ai', key: 'askAi', icon: MessageCircle },
   { href: '/contact', key: 'contact', icon: Mail },
 ] as const;

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Send, Sparkles } from 'lucide-react';
+import { Bot, FileSearch, Send, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -10,17 +10,24 @@ import { cn } from '@/lib/utils';
 import { useLocale } from '@/contexts/locale';
 
 type Message = { role: 'user' | 'assistant'; content: string };
+type TabKey = 'chat' | 'jd';
 
 export default function AskAIPage() {
   const { locale, t } = useLocale();
+  const [tab, setTab] = useState<TabKey>('chat');
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [streaming, setStreaming] = useState(false);
+  const [jdText, setJdText] = useState('');
+  const [jdLoading, setJdLoading] = useState(false);
+  const [jdResult, setJdResult] = useState<{ matchPercent: number; skillGaps: string[]; reasons: string[] } | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const streamBufferRef = useRef('');
   const streamEndedRef = useRef(false);
   const typewriterIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const examplePrompts = [t('askAi.example1'), t('askAi.example2'), t('askAi.example3')];
 
   useEffect(() => {
     const el = listRef.current;
@@ -57,8 +64,8 @@ export default function AskAIPage() {
     }, TYPEWRITER_MS);
   };
 
-  async function handleSend() {
-    const text = input.trim();
+  async function handleSend(overrideText?: string) {
+    const text = (overrideText ?? input).trim();
     if (!text || loading) return;
 
     const userMsg: Message = { role: 'user', content: text };
@@ -153,6 +160,35 @@ export default function AskAIPage() {
     }
   }
 
+  async function handleJdAnalyze() {
+    const text = jdText.trim();
+    if (!text || jdLoading) return;
+    setJdLoading(true);
+    setJdResult(null);
+    try {
+      const res = await fetch('/api/jd-match', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jd: text, locale }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? res.statusText);
+      setJdResult({
+        matchPercent: data.matchPercent ?? 0,
+        skillGaps: data.skillGaps ?? [],
+        reasons: data.reasons ?? [],
+      });
+    } catch (e) {
+      setJdResult({
+        matchPercent: 0,
+        skillGaps: [],
+        reasons: [e instanceof Error ? e.message : 'Request failed'],
+      });
+    } finally {
+      setJdLoading(false);
+    }
+  }
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <motion.div
@@ -170,24 +206,126 @@ export default function AskAIPage() {
         </p>
       </motion.div>
 
-      <Card className="overflow-hidden">
-        <CardHeader className="border-b border-slate-700/50 py-4">
-          <CardTitle className="flex items-center gap-2 text-base">
-            <Bot className="h-5 w-5 text-cyan-400" />
-            {t('askAi.assistantTitle')}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-0">
-          <div
-            ref={listRef}
-            className="chat-list-scrollbar h-[400px] overflow-y-auto overflow-x-hidden p-4 space-y-4"
-          >
-            {messages.length === 0 && (
-              <div className="text-center text-slate-500 text-sm py-8">
-                {t('askAi.emptyHint')}
-              </div>
-            )}
-            {messages.map((m, i) => (
+      <div className="flex gap-1 p-1 rounded-lg bg-slate-800/60 border border-slate-700/50 mb-4">
+        <button
+          type="button"
+          onClick={() => setTab('chat')}
+          className={cn(
+            'flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-sm font-medium transition-colors',
+            tab === 'chat' ? 'bg-cyan-500/20 text-cyan-400' : 'text-slate-400 hover:text-slate-200'
+          )}
+        >
+          <Bot className="h-4 w-4" />
+          {t('askAi.tabChat')}
+        </button>
+        <button
+          type="button"
+          onClick={() => setTab('jd')}
+          className={cn(
+            'flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-sm font-medium transition-colors',
+            tab === 'jd' ? 'bg-cyan-500/20 text-cyan-400' : 'text-slate-400 hover:text-slate-200'
+          )}
+        >
+          <FileSearch className="h-4 w-4" />
+          {t('askAi.tabJd')}
+        </button>
+      </div>
+
+      <>
+      {tab === 'jd' && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="space-y-4"
+        >
+          <Card>
+            <CardHeader className="py-4">
+              <CardTitle className="text-base">{t('askAi.jdTitle')}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <textarea
+                placeholder={t('askAi.jdPlaceholder')}
+                value={jdText}
+                onChange={(e) => setJdText(e.target.value)}
+                disabled={jdLoading}
+                rows={5}
+                className="chat-list-scrollbar w-full rounded-lg border border-slate-600 bg-slate-800/80 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 resize-y min-h-[120px]"
+              />
+              <Button onClick={handleJdAnalyze} disabled={jdLoading}>
+                {jdLoading ? t('askAi.jdThinking') : t('askAi.jdAnalyze')}
+              </Button>
+            </CardContent>
+          </Card>
+          {jdResult && (
+            <Card className="border-cyan-500/20">
+              <CardContent className="p-5 space-y-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-slate-400 text-sm">{t('askAi.jdMatch')}</span>
+                  <span className={cn(
+                    'text-2xl font-bold',
+                    jdResult.matchPercent >= 70 ? 'text-green-400' : jdResult.matchPercent >= 50 ? 'text-cyan-400' : 'text-amber-400'
+                  )}>
+                    {jdResult.matchPercent}%
+                  </span>
+                </div>
+                {jdResult.reasons.length > 0 && (
+                  <div>
+                    <p className="text-slate-400 text-sm mb-1">{t('askAi.jdReason')}</p>
+                    <ul className="list-disc list-inside text-slate-300 text-sm space-y-0.5">
+                      {jdResult.reasons.map((r, i) => (
+                        <li key={i}>{r}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {jdResult.skillGaps.length > 0 && (
+                  <div>
+                    <p className="text-slate-400 text-sm mb-1">{t('askAi.jdGaps')}</p>
+                    <ul className="list-disc list-inside text-slate-400 text-sm space-y-0.5">
+                      {jdResult.skillGaps.map((g, i) => (
+                        <li key={i}>{g}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
+        </motion.div>
+      )}
+
+      {tab === 'chat' && (
+        <Card className="overflow-hidden">
+          <CardHeader className="border-b border-slate-700/50 py-4">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Bot className="h-5 w-5 text-cyan-400" />
+              {t('askAi.assistantTitle')}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div
+              ref={listRef}
+              className="chat-list-scrollbar h-[400px] overflow-y-auto overflow-x-hidden p-4 space-y-4"
+            >
+              <>
+                {messages.length === 0 && (
+                  <div className="space-y-3">
+                    <p className="text-center text-slate-500 text-sm">{t('askAi.emptyHint')}</p>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {examplePrompts.map((prompt, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => handleSend(prompt)}
+                          className="px-3 py-1.5 rounded-lg bg-slate-700/60 hover:bg-cyan-500/20 border border-slate-600 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-300 text-xs transition-colors"
+                        >
+                          {prompt}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {messages.map((m, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 8 }}
@@ -214,13 +352,14 @@ export default function AskAIPage() {
                 </div>
               </motion.div>
             ))}
-            {loading && !streaming && (
-              <div className="flex justify-start">
-                <div className="rounded-lg px-4 py-2 bg-slate-700/50 border border-slate-600/50 text-slate-400 text-sm">
-                  {t('askAi.thinking')}
-                </div>
-              </div>
-            )}
+                {loading && !streaming && (
+                  <div className="flex justify-start">
+                    <div className="rounded-lg px-4 py-2 bg-slate-700/50 border border-slate-600/50 text-slate-400 text-sm">
+                      {t('askAi.thinking')}
+                    </div>
+                  </div>
+                )}
+              </>
           </div>
           <div className="p-4 border-t border-slate-700/50 flex gap-2">
             <Input
@@ -231,17 +370,19 @@ export default function AskAIPage() {
               disabled={loading}
               className="flex-1"
             />
-            <Button onClick={handleSend} disabled={loading}>
+            <Button onClick={() => handleSend()} disabled={loading}>
               <Send className="h-4 w-4 sm:mr-1" />
               <span className="hidden sm:inline">{t('askAi.send')}</span>
             </Button>
           </div>
         </CardContent>
       </Card>
+      )}
 
       <p className="text-xs text-slate-500 text-center mt-4">
         {t('askAi.footer')}
       </p>
+      </>
     </div>
   );
 }

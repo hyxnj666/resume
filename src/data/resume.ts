@@ -8,8 +8,8 @@ import { resumeDataEn } from './resume-en';
  */
 export const resumeData = {
   name: '刘峰',
-  title: '高级前端开发工程师 / AI 大前端工程师 (AI Frontend Engineer)',
-  tagline: 'AI · 全栈 方向',
+  title: '高级前端开发工程师 / AI 大前端架构工程师',
+  tagline: '面向 Agent / RAG / Workflow 的 AI 产品前端架构与交付',
   location: '深圳市南山区',
   birth: '1999年11月',
   phone: '17347032934',
@@ -62,30 +62,30 @@ export const resumeData = {
       stack: 'Vue3、TypeScript、Vite、Ant Design Vue、Pinia',
       highlight: true,
       points: [
-        '负责 AI 平台整体前端架构设计与技术选型，基于 Vue3 + TypeScript + Vite 构建模块化前端架构，提升系统可扩展性与开发效率。',
-        '设计并实现 AI 对话系统前端架构，实现流式响应(Streaming Rendering)渲染机制，支持多轮上下文管理与高并发消息处理，优化 AI 交互体验。',
-        '构建 AI Workflow(DAG)可视化流程编辑器，基于节点化架构实现 Prompt Node、LLM Node、Tool Node 等流程节点，支持拖拽式流程编排与执行调试。',
-        '参与 AI Agent(智能体)系统前端开发，设计类 Step Flow 的任务执行界面，实现任务拆解、执行状态追踪与多工具调用展示。',
-        '集成多种 AI 模型能力，实现文生图、文生视频等多模态 AI 功能的统一调用与交互界面设计。',
-        '构建 AI 知识库(RAG)系统前端模块，实现知识检索、语义搜索与对话增强能力，提升 AI 回答准确性。',
-        '设计 AI 平台的 API 交互层与 WebSocket 实时通信机制，实现 AI 响应流式输出与实时任务状态更新。',
+        '负责 AI 平台整体前端架构设计与技术选型，基于 Vue3 + TypeScript + Vite 构建模块化前端架构，提升系统可扩展性、团队协作效率与后续功能复用能力。',
+        '设计并实现 AI 对话系统前端架构，实现流式响应(Streaming Rendering)渲染机制，支持多轮上下文管理与高并发消息处理，持续优化核心 AI 交互体验与响应稳定性。',
+        '构建 AI Workflow(DAG)可视化流程编辑器，基于节点化架构实现 Prompt Node、LLM Node、Tool Node 等流程节点，支撑复杂流程编排、执行调试与平台化能力沉淀。',
+        '参与 AI Agent(智能体)系统前端开发，设计类 Step Flow 的任务执行界面，实现任务拆解、执行状态追踪与多工具调用展示，提升执行链路可视性与产品完成度。',
+        '集成多种 AI 模型能力，实现文生图、文生视频等多模态 AI 功能的统一调用与交互界面设计，降低多模型接入与功能扩展成本。',
+        '构建 AI 知识库(RAG)系统前端模块，实现知识检索、语义搜索与对话增强能力，提升回答可用性、可解释性与业务落地价值。',
+        '设计 AI 平台的 API 交互层与 WebSocket 实时通信机制，实现 AI 响应流式输出与实时任务状态更新，增强系统实时性与复杂场景下的交互一致性。',
       ],
     },
     {
       company: '深圳海普洛斯生物科技有限公司 · 前端开发',
       time: '2022.07 - 至今（简历前）',
       points: [
-        '负责大健康业务线前端架构与全程交付，包括海普基因小程序、代理商 H5 及海码后台，从需求分析、技术方案到开发上线均由本人主导或独立完成。',
-        '引入并落地 Vue3、Uni-app 等技术栈，全程负责海普基因小程序与大健康 H5 的架构设计、核心模块开发与迭代，保障可扩展性与可维护性。',
-        '搭建智能实验室大屏可视化项目，负责后台功能迭代与性能优化，带领实习生参与开发并进行技术评审与培训。',
+        '负责大健康业务线前端架构与全程交付，包括海普基因小程序、代理商 H5 及海码后台，从需求分析、技术方案到开发上线均由本人主导或独立完成，保障多个业务系统稳定迭代。',
+        '引入并落地 Vue3、Uni-app 等技术栈，全程负责海普基因小程序与大健康 H5 的架构设计、核心模块开发与迭代，提升项目可扩展性、交付效率与后续维护性。',
+        '搭建智能实验室大屏可视化项目，负责后台功能迭代与性能优化，带领实习生参与开发并进行技术评审与培训，提升团队协作与项目落地效率。',
       ],
     },
     {
       company: '深圳易仓科技有限公司 · 前端开发',
       time: '2021.07 - 2022.05',
       points: [
-        '负责中台与后台项目的前端开发与维护，使用 Nuxt + TypeScript 构建，参与数据可视化与组件库的架构与落地。',
-        '全程参与用户中心、Listing、六扇门 BI、极客选品等项目的需求分析、核心模块开发与单元测试，维护与优化前端组件库。',
+        '负责中台与后台项目的前端开发与维护，使用 Nuxt + TypeScript 构建，参与数据可视化与组件库的架构与落地，提升中后台模块复用度与开发规范性。',
+        '全程参与用户中心、Listing、六扇门 BI、极客选品等项目的需求分析、核心模块开发与单元测试，持续维护与优化前端组件库，支撑多个业务模块高效交付。',
       ],
     },
   ],
@@ -93,36 +93,39 @@ export const resumeData = {
   projects: [
     {
       name: 'AI 智能应用平台（达利国际）',
-      desc: '构建企业级 AI 应用平台，为用户提供 AI 对话、AI Workflow(DAG)、AI Agent 与多模态能力，支持通过可视化方式快速构建 AI 应用。',
+      desc: '构建企业级 AI 应用平台，为用户提供 AI 对话、AI Workflow(DAG)、AI Agent 与多模态能力，支持通过可视化方式快速构建 AI 应用，并沉淀平台化复用能力。',
       stack: 'Vue3、TypeScript、Vite、Ant Design Vue、Pinia、WebSocket、AI API、Streaming Rendering',
       highlight: true,
       points: [
-        '负责 AI 平台整体前端架构设计与技术选型，基于 Vue3 + TypeScript + Vite 构建模块化前端架构，提升系统可扩展性与开发效率。',
-        '设计并实现 AI 对话系统前端架构，实现流式响应(Streaming Rendering)渲染机制，支持多轮上下文管理与高并发消息处理，优化 AI 交互体验。',
-        '构建 AI Workflow(DAG)可视化流程编辑器，基于节点化架构实现 Prompt Node、LLM Node、Tool Node 等流程节点，支持拖拽式流程编排与执行调试。',
-        '参与 AI Agent(智能体)系统前端开发，设计类 Step Flow 的任务执行界面，实现任务拆解、执行状态追踪与多工具调用展示。',
-        '集成多种 AI 模型能力，实现文生图、文生视频等多模态 AI 功能的统一调用与交互界面设计。',
-        '构建 AI 知识库(RAG)系统前端模块，实现知识检索、语义搜索与对话增强能力，提升 AI 回答准确性。',
-        '设计 AI 平台的 API 交互层与 WebSocket 实时通信机制，实现 AI 响应流式输出与实时任务状态更新。',
-        '技术挑战：实现 AI Workflow 节点执行状态的实时同步与可视化，通过 WebSocket 实现流程执行日志实时更新，解决复杂异步任务下的状态管理问题。',
+        '负责 AI 平台整体前端架构设计与技术选型，基于 Vue3 + TypeScript + Vite 构建模块化前端架构，提升系统可扩展性、研发效率与后续模块复用能力。',
+        '设计并实现 AI 对话系统前端架构，实现流式响应(Streaming Rendering)渲染机制，支持多轮上下文管理与高并发消息处理，优化核心交互体验与系统稳定性。',
+        '构建 AI Workflow(DAG)可视化流程编辑器，基于节点化架构实现 Prompt Node、LLM Node、Tool Node 等流程节点，支撑复杂流程编排、执行调试与能力平台化沉淀。',
+        '参与 AI Agent(智能体)系统前端开发，设计类 Step Flow 的任务执行界面，实现任务拆解、执行状态追踪与多工具调用展示，提升执行链路可视性与产品完成度。',
+        '集成多种 AI 模型能力，实现文生图、文生视频等多模态 AI 功能的统一调用与交互界面设计，降低新能力接入与扩展成本。',
+        '构建 AI 知识库(RAG)系统前端模块，实现知识检索、语义搜索与对话增强能力，提升回答可用性、可解释性与业务落地价值。',
+        '设计 AI 平台的 API 交互层与 WebSocket 实时通信机制，实现 AI 响应流式输出与实时任务状态更新，增强复杂场景下的实时交互一致性。',
+        '技术挑战：实现 AI Workflow 节点执行状态的实时同步与可视化，通过 WebSocket 实现流程执行日志实时更新，解决复杂异步任务下的状态管理问题，提升流程调试效率。',
+        '项目价值：将 AI 对话、Workflow、Agent 与多模态能力整合为统一平台入口，提升 AI 能力复用效率，并为后续业务场景扩展提供可持续的前端底座。',
       ],
     },
     {
       name: '海普基因小程序',
-      desc: '公司主销售平台，支持产品购买、样本绑定与回寄、报告查询、预约咨询等，全程由本人负责前端架构与交付。',
+      desc: '公司主销售平台，支持产品购买、样本绑定与回寄、报告查询、预约咨询等，全程由本人负责前端架构与交付，支撑核心业务线上化运行。',
       stack: 'Uni-app、Vue3、Canvas、微信小程序 API',
       points: [
-        '全程负责需求分析、技术方案设计、开发、测试与上线，独立完成项目前端架构与模块拆分。',
-        '统一封装请求层与微信开放能力，优化多端适配与数据请求策略，使用 Canvas 实现图片保存与分享等交互，保障体验与可维护性。',
+        '全程负责需求分析、技术方案设计、开发、测试与上线，独立完成项目前端架构与模块拆分，保障项目按业务节奏稳定交付。',
+        '统一封装请求层与微信开放能力，优化多端适配与数据请求策略，使用 Canvas 实现图片保存与分享等交互，提升使用体验并降低后续维护成本。',
+        '项目价值：支撑核心销售与服务链路线上化，帮助业务以更轻的运营方式承载产品购买、报告查询与咨询预约等关键场景。',
       ],
     },
     {
       name: '大健康代理商 H5',
-      desc: '面向销售、员工与第三方客户的综合业务平台，含注册、商城、客户管理、学习考试、签约、样本绑定等，全程由本人负责前端架构与核心模块交付。',
+      desc: '面向销售、员工与第三方客户的综合业务平台，含注册、商城、客户管理、学习考试、签约、样本绑定等，全程由本人负责前端架构与核心模块交付，支撑多角色业务协同。',
       stack: 'Uni-app、Vue3、Canvas、微信 API、第三方签约',
       points: [
-        '全程负责系统前端架构设计与核心模块开发，主导登录注册、商城、客户管理、考试、签约、认证与团队管理等模块，保障功能完整与可扩展性。',
-        '集成微信 API 实现多图上传与视频学习/考试，对接第三方实现在线签约；使用 Canvas 生成产品卡片，支持扫码跳转小程序下单，提升转化与交互体验。',
+        '全程负责系统前端架构设计与核心模块开发，主导登录注册、商城、客户管理、考试、签约、认证与团队管理等模块，保障多业务场景下的功能完整与可扩展性。',
+        '集成微信 API 实现多图上传与视频学习/考试，对接第三方实现在线签约；使用 Canvas 生成产品卡片，支持扫码跳转小程序下单，提升转化效率与交互体验。',
+        '项目价值：打通销售、学习、签约与客户管理等关键业务链路，提升多角色协同效率，并增强平台对业务扩展的承载能力。',
       ],
     },
     {
@@ -164,6 +167,55 @@ export function getResumeData(locale: Locale): ResumeData {
   return locale === 'en' ? (resumeDataEn as ResumeData) : resumeData;
 }
 
+function parseBirthToYearMonth(birth: string): { year: number; month: number } | null {
+  const zhMatch = birth.match(/(\d{4})年\s*(\d{1,2})月?/);
+  if (zhMatch) {
+    return { year: Number(zhMatch[1]), month: Number(zhMatch[2]) };
+  }
+
+  const enMatch = birth.match(
+    /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+(\d{4})\b/i
+  );
+  if (enMatch) {
+    const monthMap: Record<string, number> = {
+      jan: 1,
+      feb: 2,
+      mar: 3,
+      apr: 4,
+      may: 5,
+      jun: 6,
+      jul: 7,
+      aug: 8,
+      sep: 9,
+      oct: 10,
+      nov: 11,
+      dec: 12,
+    };
+    return { year: Number(enMatch[2]), month: monthMap[enMatch[1].slice(0, 3).toLowerCase()] };
+  }
+
+  return null;
+}
+
+function getCurrentAgeFromBirth(birth: string, now = new Date()): number | null {
+  const parsed = parseBirthToYearMonth(birth);
+  if (!parsed) return null;
+
+  let age = now.getFullYear() - parsed.year;
+  const currentMonth = now.getMonth() + 1;
+  if (currentMonth < parsed.month) {
+    age -= 1;
+  }
+  return age;
+}
+
+function formatCurrentDate(locale: Locale, now = new Date()): string {
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return locale === 'en' ? `${year}-${month}-${day}` : `${year}-${month}-${day}`;
+}
+
 export function getResumeSummaryForAI(locale: Locale = 'zh'): string {
   const d = getResumeData(locale);
   const workStr = d.work.map((w) => `- ${w.company}（${w.time}）：${w.points.join(' ')}`).join('\n');
@@ -172,8 +224,14 @@ export function getResumeSummaryForAI(locale: Locale = 'zh'): string {
   const summary = 'summary' in d ? (d as ResumeData).summary : '';
   const core = 'coreAbilities' in d ? (d as ResumeData).coreAbilities?.join('；') : '';
   const arch = 'architectureSummary' in d ? (d as ResumeData).architectureSummary : '';
+  const currentDate = formatCurrentDate(locale);
+  const currentAge = getCurrentAgeFromBirth(d.birth);
 
   const zhPrompt = `你是刘峰个人简历的 AI 助手。请仅根据以下简历信息回答用户关于刘峰的问题，不要编造内容。若问题与简历无关，可礼貌说明你只回答与刘峰职业经历、技能、项目相关的问题。
+
+【回答要求】
+当前日期：${currentDate}
+${currentAge !== null ? `年龄请以“${currentAge}岁”为准，不要自行估算或猜测。` : '如果用户问年龄，只能基于已知信息谨慎回答。'}
 
 【个人简介】
 ${summary}
@@ -181,7 +239,7 @@ ${summary}
 【基本信息】
 姓名：${d.name}
 求职意向：${d.title}（${d.tagline}）
-现居住地：${d.location}；出生：${d.birth}
+现居住地：${d.location}；出生：${d.birth}${currentAge !== null ? `；当前年龄：${currentAge}岁` : ''}
 联系方式：电话 ${maskPhone(d.phone)}，邮箱 ${d.email}
 
 【教育】
@@ -206,13 +264,17 @@ ${arch}
 
   const enPrompt = `You are an AI assistant for Liu Feng's resume. Answer only based on the resume below. Do not invent information. If the question is unrelated, say you only answer questions about his experience, skills, and projects.
 
+【Answer rules】
+Current date: ${currentDate}
+${currentAge !== null ? `If the user asks about age, use "${currentAge}" as the current age. Do not estimate.` : 'If the user asks about age, answer cautiously based only on known information.'}
+
 【Summary】
 ${summary}
 
 【Basic Info】
 Name: ${d.name}
 Title: ${d.title} (${d.tagline})
-Location: ${d.location}; Birth: ${d.birth}
+Location: ${d.location}; Birth: ${d.birth}${currentAge !== null ? `; Current age: ${currentAge}` : ''}
 Contact: ${maskPhone(d.phone)}, ${d.email}
 
 【Education】

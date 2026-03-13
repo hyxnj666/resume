@@ -14,6 +14,7 @@ export default function HomePage() {
   const resume = getResumeData(locale);
   const aiProjects = resume.projects.filter((p) => p.highlight);
   const otherProjects = resume.projects.filter((p) => !p.highlight).slice(0, 2);
+  const projectCardContentClassName = 'p-5 pt-6 sm:p-6 sm:pt-6';
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-16">
@@ -30,7 +31,7 @@ export default function HomePage() {
           transition={{ delay: 0.2 }}
           className="text-xs font-mono text-cyan-400/90 tracking-[0.3em] uppercase mb-3"
         >
-          {t('home.heroTagline')}
+          {resume.tagline}
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -111,7 +112,7 @@ export default function HomePage() {
         <div className="space-y-4">
           {aiProjects.map((p, i) => (
             <Card key={p.name} className="overflow-hidden border-cyan-500/20 hover:border-cyan-500/40 transition-colors">
-              <CardContent className="p-5">
+              <CardContent className={projectCardContentClassName}>
                 <h3 className="font-semibold text-white">{p.name}</h3>
                 <p className="text-sm text-slate-400 mt-1">{p.desc}</p>
                 <p className="text-xs text-cyan-400/80 font-mono mt-2">{p.stack}</p>
@@ -141,7 +142,7 @@ export default function HomePage() {
         <div className="space-y-4">
           {otherProjects.map((p) => (
             <Card key={p.name} className="overflow-hidden">
-              <CardContent className="p-5">
+              <CardContent className={projectCardContentClassName}>
                 <h3 className="font-semibold text-white">{p.name}</h3>
                 <p className="text-sm text-slate-400 mt-1">{p.desc}</p>
                 <p className="text-xs text-slate-500 font-mono mt-2">{p.stack}</p>

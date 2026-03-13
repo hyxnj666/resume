@@ -9,9 +9,14 @@ import { cn } from '@/lib/utils';
 import { useLocale } from '@/contexts/locale';
 import { getResumeData } from '@/data/resume';
 
+function isProjectValuePoint(point: string) {
+  return point.startsWith('项目价值：') || point.startsWith('Project value:');
+}
+
 export default function ProjectsPage() {
   const { locale, t } = useLocale();
   const resume = getResumeData(locale);
+  const projectCardContentClassName = 'p-5 pt-6 sm:p-6 sm:pt-6';
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -32,27 +37,37 @@ export default function ProjectsPage() {
       </motion.div>
 
       <div className="space-y-5">
-        {resume.projects.map((p, i) => (
-          <motion.div
-            key={p.name}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.06 }}
-          >
-            <Card className={p.highlight ? 'ring-1 ring-cyan-400/30' : ''}>
-              <CardContent className="p-5">
-                <h2 className="font-semibold text-white">{p.name}</h2>
-                <p className="text-sm text-slate-400 mt-1">{p.desc}</p>
-                <ul className="mt-2 space-y-1 text-slate-400 text-sm list-disc list-inside">
-                  {p.points.map((point, k) => (
-                    <li key={k}>{point}</li>
-                  ))}
-                </ul>
-                <p className="mt-2 text-xs text-cyan-400/80 font-mono">{p.stack}</p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+        {resume.projects.map((p, i) => {
+          const projectValuePoint = p.points.find(isProjectValuePoint);
+          const regularPoints = p.points.filter((point) => !isProjectValuePoint(point));
+
+          return (
+            <motion.div
+              key={p.name}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.06 }}
+            >
+              <Card className={p.highlight ? 'ring-1 ring-cyan-400/30' : ''}>
+                <CardContent className={projectCardContentClassName}>
+                  <h2 className="font-semibold text-white">{p.name}</h2>
+                  <p className="text-sm text-slate-400 mt-1">{p.desc}</p>
+                  <ul className="mt-2 space-y-1 text-slate-400 text-sm list-disc list-inside">
+                    {regularPoints.map((point, k) => (
+                      <li key={k}>{point}</li>
+                    ))}
+                  </ul>
+                  {projectValuePoint && (
+                    <div className="mt-3 rounded-xl border border-cyan-500/20 bg-cyan-500/8 px-3 py-2.5 text-sm leading-6 text-cyan-100">
+                      {projectValuePoint}
+                    </div>
+                  )}
+                  <p className="mt-2 text-xs text-cyan-400/80 font-mono">{p.stack}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
