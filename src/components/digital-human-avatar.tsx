@@ -11,6 +11,19 @@ const DigitalHumanCanvas = dynamic(() => import('@/components/digital-human-canv
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
 
+/** 语音识别实例类型（Web Speech API 在部分 tsconfig 下无全局类型） */
+type SpeechRecognitionInstance = {
+  start(): void;
+  stop(): void;
+  abort(): void;
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  onresult: ((event: { results: Iterable<{ item(i: number): { transcript: string } }> }) => void) | null;
+  onend: (() => void) | null;
+  onerror: (() => void) | null;
+};
+
 const TYPEWRITER_MS = 24;
 const CHARS_PER_TICK = 2;
 
@@ -28,7 +41,7 @@ export function DigitalHumanAvatar() {
   const [isListening, setIsListening] = useState(false);
   const [isTtsSpeaking, setIsTtsSpeaking] = useState(false);
   const [voiceUnsupported, setVoiceUnsupported] = useState(false);
-  const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
+  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
   const lastSpokenContentRef = useRef('');
   const messagesRef = useRef<ChatMessage[]>([]);
   const handleSendRef = useRef<(text?: string) => void>(() => {});
@@ -100,12 +113,12 @@ export function DigitalHumanAvatar() {
       setVoiceUnsupported(true);
       return;
     }
-    recognitionRef.current = new SR();
+    recognitionRef.current = new SR() as SpeechRecognitionInstance;
     const rec = recognitionRef.current;
     rec.continuous = true;
     rec.interimResults = false;
     rec.lang = locale === 'zh' ? 'zh-CN' : 'en-US';
-    rec.onresult = (e: SpeechRecognitionEvent) => {
+    rec.onresult = (e: SpeechRecognitionResultEvent) => {
       const transcript = Array.from(e.results)
         .map((r) => r.item(0).transcript)
         .join(' ')
