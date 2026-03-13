@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Bot, FileText, FolderOpen, Sparkles } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+// import { DigitalHumanAvatar } from '@/components/digital-human-avatar';
 import { cn } from '@/lib/utils';
 import { useLocale } from '@/contexts/locale';
 import { getResumeData } from '@/data/resume';
@@ -18,6 +19,8 @@ export default function HomePage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-16">
+      {/* 数字人入口暂时隐藏，需要时取消注释即可 */}
+      {/* <DigitalHumanAvatar /> */}
       {/* Hero */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}

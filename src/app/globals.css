@@ -112,6 +112,26 @@ body::before {
   background: rgba(34, 211, 238, 0.5);
 }
 
+/* 项目解读弹窗：滚动条样式加在弹窗内容区 div（.dialog-content）上 */
+[data-dialog="project-explainer"] .dialog-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.45) rgba(15, 23, 42, 0.9);
+}
+[data-dialog="project-explainer"] .dialog-content::-webkit-scrollbar {
+  width: 8px;
+}
+[data-dialog="project-explainer"] .dialog-content::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 4px;
+}
+[data-dialog="project-explainer"] .dialog-content::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.4);
+  border-radius: 4px;
+}
+[data-dialog="project-explainer"] .dialog-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.55);
+}
+
 /* AI Workflow Builder - 画布与控件贴合简历深色主题 */
 .workflow-theme {
   --rf-background: #0f172a;

@@ -111,7 +111,12 @@ export function ProjectExplainButton({ project }: { project: Project }) {
         <Sparkles className="h-3.5 w-3.5" />
         {btnLabel}
       </Button>
-      <Dialog open={open} onOpenChange={setOpen} title={t('projectExplainer.title')}>
+      <Dialog
+        open={open}
+        onOpenChange={setOpen}
+        title={t('projectExplainer.title')}
+        dataAttributes={{ 'data-dialog': 'project-explainer' }}
+      >
         <div className="space-y-3">
           {loading && !content && (
             <p className="text-slate-400 text-sm">{t('projectExplainer.loading')}</p>

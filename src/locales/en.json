@@ -20,7 +20,21 @@
     "viewAllAiProjects": "View all AI projects",
     "projectsTitle": "Projects",
     "viewAllProjects": "View all projects",
-    "ctaDesc": "If you want a faster read on my background, projects, and strengths, ask the AI grounded in my resume context."
+    "ctaDesc": "If you want a faster read on my background, projects, and strengths, ask the AI grounded in my resume context.",
+    "digitalHumanLabel": "Talk to \"me\"",
+    "digitalHumanTitle": "Digital Human"
+  },
+  "digitalHuman": {
+    "close": "Close",
+    "loadingAvatar": "Loading avatar…",
+    "placeholder": "Speak or type to send",
+    "inputPlaceholder": "Type here…",
+    "tapToSpeak": "Tap mic to speak",
+    "send": "Send",
+    "voiceComing": "Voice coming soon",
+    "listening": "Listening…",
+    "voiceUnsupported": "Speech recognition not supported in this browser",
+    "comingSoon": "3D avatar and voice chat coming soon"
   },
   "resume": {
     "resumeLabel": "Resume",

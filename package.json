@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-avatar": "node scripts/generate-avatar.mjs"
   },
   "dependencies": {
     "@xyflow/react": "^12.3.6",
@@ -19,6 +20,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "shiki": "^3.0.0",
+    "three": "^0.170.0",
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/drei": "^9.117.3",
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {

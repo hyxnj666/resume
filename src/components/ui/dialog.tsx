@@ -10,9 +10,13 @@ interface DialogProps {
   title?: string;
   children: React.ReactNode;
   className?: string;
+  /** Class for the scrollable content area (e.g. scrollbar styling) */
+  contentClassName?: string;
+  /** e.g. { 'data-dialog': 'project-explainer' } to target this dialog's content in CSS */
+  dataAttributes?: Record<string, string>;
 }
 
-export function Dialog({ open, onOpenChange, title, children, className }: DialogProps) {
+export function Dialog({ open, onOpenChange, title, children, className, contentClassName, dataAttributes }: DialogProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,6 +48,7 @@ export function Dialog({ open, onOpenChange, title, children, className }: Dialo
           'relative z-10 w-full max-w-lg max-h-[85vh] flex flex-col rounded-xl border border-slate-600 bg-slate-900 shadow-xl',
           className
         )}
+        {...(dataAttributes ?? {})}
         onClick={(e) => e.stopPropagation()}
       >
         {title && (
@@ -61,7 +66,7 @@ export function Dialog({ open, onOpenChange, title, children, className }: Dialo
             </button>
           </div>
         )}
-        <div className="overflow-y-auto flex-1 p-4">{children}</div>
+        <div className={cn('dialog-content overflow-y-auto flex-1 p-4', contentClassName)}>{children}</div>
       </div>
     </div>
   );

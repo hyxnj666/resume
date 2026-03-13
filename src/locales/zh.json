@@ -20,7 +20,21 @@
     "viewAllAiProjects": "查看全部 AI 项目",
     "projectsTitle": "项目",
     "viewAllProjects": "查看全部项目",
-    "ctaDesc": "想更快了解我的经历、项目与能力边界，可以直接让 AI 基于简历内容回答"
+    "ctaDesc": "想更快了解我的经历、项目与能力边界，可以直接让 AI 基于简历内容回答",
+    "digitalHumanLabel": "和「我」对话",
+    "digitalHumanTitle": "数字人对话"
+  },
+  "digitalHuman": {
+    "close": "关闭",
+    "loadingAvatar": "加载形象中…",
+    "placeholder": "直接说话，或输入文字发送",
+    "inputPlaceholder": "输入文字…",
+    "tapToSpeak": "点击麦克风说话",
+    "send": "发送",
+    "voiceComing": "语音即将上线",
+    "listening": "正在听…",
+    "voiceUnsupported": "当前浏览器不支持语音识别",
+    "comingSoon": "3D 形象与语音对话即将上线"
   },
   "resume": {
     "resumeLabel": "简历",
