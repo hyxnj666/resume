@@ -11,6 +11,11 @@ const DigitalHumanCanvas = dynamic(() => import('@/components/digital-human-canv
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
 
+/** 语音识别结果事件（无全局类型时使用） */
+type SpeechRecognitionResultEvent = {
+  results: Iterable<{ item(i: number): { transcript: string } }>;
+};
+
 /** 语音识别实例类型（Web Speech API 在部分 tsconfig 下无全局类型） */
 type SpeechRecognitionInstance = {
   start(): void;
@@ -19,7 +24,7 @@ type SpeechRecognitionInstance = {
   lang: string;
   continuous: boolean;
   interimResults: boolean;
-  onresult: ((event: { results: Iterable<{ item(i: number): { transcript: string } }> }) => void) | null;
+  onresult: ((event: SpeechRecognitionResultEvent) => void) | null;
   onend: (() => void) | null;
   onerror: (() => void) | null;
 };
@@ -107,8 +112,11 @@ export function DigitalHumanAvatar() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const SR = (window as unknown as { SpeechRecognition?: new () => SpeechRecognition; webkitSpeechRecognition?: new () => SpeechRecognition }).SpeechRecognition
-      || (window as unknown as { webkitSpeechRecognition?: new () => SpeechRecognition }).webkitSpeechRecognition;
+    const Win = window as unknown as {
+      SpeechRecognition?: new () => SpeechRecognitionInstance;
+      webkitSpeechRecognition?: new () => SpeechRecognitionInstance;
+    };
+    const SR = Win.SpeechRecognition || Win.webkitSpeechRecognition;
     if (!SR) {
       setVoiceUnsupported(true);
       return;
